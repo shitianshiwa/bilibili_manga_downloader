@@ -74,7 +74,7 @@ def download_manga_episode(episode_id: int, root_path: str):
         os.makedirs(ep_path)
     for i, e in enumerate(pics):
         url = get_image_url(e)
-        print(i, e)
+        print(i, url)
         if os.path.exists(os.path.join(ep_path, str(i) + '.jpg'))==False:#检查是否已下载过图片 
             res = requests.get(url)
             with open(os.path.join(ep_path, str(i) + '.jpg'), 'wb+') as f:
@@ -125,6 +125,7 @@ if __name__ == "__main__":
             print('解析到的漫画id为空')
     else:
         print("输入内容为空")
+    os.system("pause")
     pass
     # download_manga_all(25966)
     # download_manga_episode(448369, os.path.join(download_path, '辉夜大小姐想让我告白 ~天才们的恋爱头脑战~'))
