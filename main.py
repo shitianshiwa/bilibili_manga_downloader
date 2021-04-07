@@ -9,14 +9,7 @@ from pprint import pprint
 from index_decode import decode_index_data
 
 download_path = './manhua'
-headers = {
-    "accept": "application/json, text/plain, */*",
-    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "content-type": "application/json;charset=UTF-8",
-    "origin": "https://manga.bilibili.com",
-    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
-    "cookie": ""#填写样式 SESSDATA=xxxxxxxxxxxxxxxxxxx; 在浏览器f12打开开发者工具，复制 Application- Cookies - https://www.bilibili.com/ - SESSDATA 进行填写
-}
+headers = ""
 headers_cdn = {
     'Host': 'manga.hdslb.com',
     'Origin': 'https://manga.bilibili.com',
@@ -102,7 +95,19 @@ def get_image_url(img_url):
 
 
 if __name__ == "__main__":
-    temp = input("请输入漫画主页链接(https://manga.bilibili.com/detail/mcxxx),要下载付费漫画需要先购买,然后按要求填写main.py第18行,请勿把自己的账号授权交给他人(这个应该不止授权下载付费漫画),但如果出现意外,可以尝试浏览器点登出b站账号看看能不能把授权弄失效:")
+    #目前能直接改代码就不用每次都手动输入授权了，待改
+    print("要下载付费漫画需要先购买,然后按接下来的方法操作。重要提醒!请勿把自己的账号授权交给他人(这个应该不止授权下载付费漫画),但如果出现意外,可以尝试浏览器点登出b站账号看看能不能把授权弄失效")
+    cookie=input("请输入b站账号授权cookie,没有就留空别乱填(在浏览器打开b漫任意网页按f12键打开开发者工具，复制 Application(应用程序) - Cookies -https://manga.bilibili.com/ - SESSDATA值 进行填写):")
+    print("输入的cookie是:"+cookie)
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "content-type": "application/json;charset=UTF-8",
+        "origin": "https://manga.bilibili.com",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
+        "cookie": "SESSDATA="+cookie+";"#填写样式 SESSDATA=xxxxxxxxxxxxxxxxxxx; 在浏览器f12打开开发者工具，复制 Application(应用程序) - Cookies - https://manga.bilibili.com/ - SESSDATA的值 进行填写
+    }
+    temp = input("请输入漫画主页链接(https://manga.bilibili.com/detail/mcxxx):")
     if temp != "":
         temp2=""
         if re.search(r'^[0-9]+$', temp) != None:#输入漫画id可以下载
