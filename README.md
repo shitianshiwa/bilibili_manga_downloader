@@ -1,10 +1,10 @@
 # B站漫画下载
 已经支持整本漫画下载，其他还没研究怎么下，暂时对我来说够用了
 
-# 运行方式
-1. 打开章节对应链接如`https://manga.bilibili.com/mc25966/447883?from=manga_detail`,其中447883为章节id
-2. 修改代码中cookie信息，cookie在main.py中headers中，自行修改
-3. 运行main.py,修改download_manga_episode的参数，运行download_manga_episode(447883)即可下载该章节
+# 运行方式（非原作者说明）
+1. 要下载付费漫画需要先购买漫画，然后修改代码中cookie信息，cookie在main.py第18行
+2. 下载安装python，然后先点python-pip.bat,再运行start.bat
+3. 打开b漫，复制xx漫画主页链接，粘贴进cmd里
 
 # 后期计划
 * 下载后转换为mobi格式，便于kindle阅读
